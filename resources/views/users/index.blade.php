@@ -27,18 +27,6 @@
                                 <th>Updated At</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {{-- {{ dd($users) }} --}}
-                            @foreach ($users as $user)
-                            <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at }}</td>
-                                <td>{{ $user->updated_at }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -48,8 +36,22 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 <script>
     $(document).ready(function () {
-        $('#myTable').DataTable(); // Corrected the typo here
+        $('#myTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('users.get') }}",
+
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'name', name: 'name'},
+                {data: 'email', name: 'email'},
+                {data: 'created_at', name: 'created_at'},
+                {data: 'updated_at', name: 'updated_at'},
+            ]
+        });
     });
 </script>
+
