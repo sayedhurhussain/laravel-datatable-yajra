@@ -22,7 +22,14 @@ class UserController extends Controller
 
     public function getUsers()
     {
-        return DataTables::of(User::query())->make(true);
+        return DataTables::of(User::query())
+        // 1st Method to apply condition on Row
+        // ->setRowClass(function ($user) {
+        //     return $user->id % 2 == 0 ? 'alert-success' : 'alert-info';
+        // })
+        // 2nd Method to apply condition on Row
+        ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-info" }}')
+        ->make(true);
     }
 
     /**
