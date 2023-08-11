@@ -29,20 +29,29 @@ class UserController extends Controller
         // })
         // 2nd Method to apply condition on Row
         ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-info" }}')
+
         // Adds id in Rows
         ->setRowId(function ($user) {
             return $user->id;
         })
+
         // Center the Rows
         ->setRowAttr([
             'align' => 'center'
         ])
+
         // Change the name of id and name in ajax
         ->setRowData([
             'data-id' => 'row-{{$id}}',
             'data-name' => 'row-{{$name}}',
         ])
         ->addColumn('intro', 'Hi {{$name}}!')
+
+        // Edit column condition
+        ->editColumn('created_at', function(User $user) {
+            return $user->created_at->diffForHumans();
+        })
+        
         // to return use both tojson and make(true)
         ->toJson();
         // ->make(true);
