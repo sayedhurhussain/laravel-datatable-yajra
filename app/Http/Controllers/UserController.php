@@ -51,6 +51,12 @@ class UserController extends Controller
         ->editColumn('created_at', function(User $user) {
             return $user->created_at->diffForHumans();
         })
+
+        // Edit column using blade
+        ->editColumn('updated_at', 'users.column')
+
+        // The updated at add in raw column
+        ->rawColumns(['updated_at'])
         
         // to return use both tojson and make(true)
         ->toJson();
