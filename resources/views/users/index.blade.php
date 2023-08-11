@@ -23,6 +23,7 @@
                                 <th>No:</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Intro</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
                             </tr>
@@ -48,6 +49,7 @@
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},
+                {data: 'intro', name: 'intro'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'updated_at', name: 'updated_at'},
             ]

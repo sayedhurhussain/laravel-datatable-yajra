@@ -37,11 +37,15 @@ class UserController extends Controller
         ->setRowAttr([
             'align' => 'center'
         ])
+        // Change the name of id and name in ajax
         ->setRowData([
             'data-id' => 'row-{{$id}}',
             'data-name' => 'row-{{$name}}',
         ])
-        ->make(true);
+        ->addColumn('intro', 'Hi {{$name}}!')
+        // to return use both tojson and make(true)
+        ->toJson();
+        // ->make(true);
     }
 
     /**
