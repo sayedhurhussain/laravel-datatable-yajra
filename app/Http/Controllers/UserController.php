@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use pagination;
 use App\Models\User;
 use Illuminate\Http\Request;
 

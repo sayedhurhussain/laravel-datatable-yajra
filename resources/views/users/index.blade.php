@@ -1,4 +1,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{{-- datatables css link --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+
 <div class="row">
     <div class="col-12">
             @if (session('message'))
@@ -13,7 +17,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" style="width:100%">
+                    <table id="myTable" class="table table-bordered table-hover" style="width:100%">
                         <thead class="bg-light">
                             <tr>
                                 <th>No:</th>
@@ -41,3 +45,11 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable(); // Corrected the typo here
+    });
+</script>
