@@ -29,6 +29,18 @@ class UserController extends Controller
         // })
         // 2nd Method to apply condition on Row
         ->setRowClass('{{ $id % 2 == 0 ? "alert-success" : "alert-info" }}')
+        // Adds id in Rows
+        ->setRowId(function ($user) {
+            return $user->id;
+        })
+        // Center the Rows
+        ->setRowAttr([
+            'align' => 'center'
+        ])
+        ->setRowData([
+            'data-id' => 'row-{{$id}}',
+            'data-name' => 'row-{{$name}}',
+        ])
         ->make(true);
     }
 
