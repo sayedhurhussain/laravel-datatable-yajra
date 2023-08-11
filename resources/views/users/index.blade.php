@@ -44,6 +44,8 @@
         $('#myTable').DataTable({
             processing: true,
             serverSide: true,
+            Paginate:   true,
+            lengthMenu: [[10, 25, 50, 100, 500, 20000], [10, 25, 50, 100, 500, "All"]],
             ajax: "{{ route('users.get') }}",
 
             columns: [
