@@ -40,8 +40,13 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $('#myTable').DataTable({
+    // 1st Method to define datatables
+    // $(document).ready(function () {
+    //     $('#myTable').DataTable({
+    
+    // 2nd Method to define datatables
+    $(function () {
+        var table = $('#myTable').DataTable({
             processing: true,
             serverSide: true,
             Paginate:   true,
