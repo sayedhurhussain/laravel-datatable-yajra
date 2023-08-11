@@ -57,7 +57,9 @@ class UserController extends Controller
 
         // The updated at add in raw column
         ->rawColumns(['updated_at'])
-        
+
+        // Remove Column
+        ->removeColumn('email')
         // to return use both tojson and make(true)
         ->toJson();
         // ->make(true);
