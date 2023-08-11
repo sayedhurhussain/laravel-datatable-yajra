@@ -53,13 +53,21 @@ class UserController extends Controller
         })
 
         // Edit column using blade
-        ->editColumn('updated_at', 'users.column')
+        // ->editColumn('updated_at', 'users.column')
 
         // The updated at add in raw column
-        ->rawColumns(['updated_at'])
+        // ->rawColumns(['updated_at'])
 
         // Remove Column
-        ->removeColumn('email')
+        // ->removeColumn('email')
+
+        // Add the action button
+        ->addColumn('action', function($row){
+            $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+            return $actionBtn;
+        })
+        ->rawColumns(['action'])
+
         // to return use both tojson and make(true)
         ->toJson();
         // ->make(true);

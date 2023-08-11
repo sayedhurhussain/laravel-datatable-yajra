@@ -26,6 +26,7 @@
                                 <th>Intro</th>
                                 <th>Created At</th>
                                 <th>Updated At</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -52,6 +53,12 @@
                 {data: 'intro', name: 'intro'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'updated_at', name: 'updated_at'},
+                {
+                    data: 'action', 
+                    name: 'action', 
+                    orderable: true, 
+                    searchable: true
+                },
             ]
         });
     });
