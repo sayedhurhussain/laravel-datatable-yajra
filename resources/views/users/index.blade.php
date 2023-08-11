@@ -46,6 +46,9 @@
             serverSide: true,
             Paginate:   true,
             lengthMenu: [[10, 25, 50, 100, 500, 20000], [10, 25, 50, 100, 500, "All"]],
+            autoWidth:  true,
+            responsive: true,
+            searching:  true,
             ajax: "{{ route('users.get') }}",
 
             columns: [
