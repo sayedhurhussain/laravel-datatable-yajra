@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -25,6 +26,7 @@ Route::get('users/get', [UserController::class, 'getUsers'])->name('users.get');
 Route::get('users/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
+Route::resource('posts', PostController::class);
 
 
 
