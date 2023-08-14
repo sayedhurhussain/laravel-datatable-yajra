@@ -8,15 +8,8 @@
                 <h2>Add User</h2>
             </div>
             <div class="card-body">
-                {{-- 1st Method to save data --}}
-                <form method="POST" action="{{ url('users') }}" enctype="multipart/form-data">
-
-                {{-- 2nd Method to save data --}}
-                {{-- <form method="POST" action=/users> --}}
-
-                {{-- 3rd Method to save data and also change the route in web --}}
-                {{-- <form method="POST" action="{{ route('users') }}"> --}}
-                @csrf
+                <form id="create-user-form">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <label for="name">Name <span class="text-danger">*</span></label>
@@ -33,12 +26,47 @@
                             @enderror
                         </div>
                     </div><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="password">Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Enter Password" value="{{old('password')}}">
+                            @error('password')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div><br>
                     <div class="form-footer mt-6">
-                        <button type="submit" class="btn btn-primary btn-pill">Submit</button>
-                        <button type="submit" class="btn btn-light btn-pill">Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-pill" id="submit-btn">Submit</button>
+                        <button type="button" class="btn btn-light btn-pill">Cancel</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#submit-btn').click(function (event) {
+            event.preventDefault();
+
+            var formData = $('#create-user-form').serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("users.store") }}',
+                data: formData,
+                success: function (response) {
+                    $('#message').text(response.message);
+                    $('#create-user-form')[0].reset();
+
+                    window.location.href = '{{ route("users.index") }}';
+                },
+                error: function (error) {
+                    $('#message').text('Error creating user.');
+                }
+            });
+        });
+    });
+</script>

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use pagination;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\Facades\DataTables;
 
 
 class UserController extends Controller
@@ -86,7 +87,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+    
+        return response()->json(['message' => 'User created successfully']);
     }
 
     /**
